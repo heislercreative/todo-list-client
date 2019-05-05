@@ -21,13 +21,13 @@ class Projects extends Component {
   }
 
   render() {
-    const { projects } = this.state
+    const projects = this.props.projects
     return (
       <div>
         {this.state.loaded &&
           <div>
             <Header as='h2' textAlign='center'>
-              Products
+              Projects
               <Divider hidden />
             </Header>
             <div>
@@ -47,7 +47,7 @@ class Projects extends Component {
 }
 
 function mapStateToProps(state) {
-  return { projects: state.projects }
+  return { projects: state.projects.list }
 }
 
 function mapDispatchToProps(dispatch) {

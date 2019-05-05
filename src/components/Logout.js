@@ -25,7 +25,7 @@ class Logout extends Component {
 
     return(
       <Modal open={showModal} size='tiny' centered={false} trigger={
-        <Menu.Item color='white' onClick={this.openModal}>
+        <Menu.Item onClick={this.openModal}>
           <Icon name='sign-out'/>
         </Menu.Item>}
       >

@@ -12,10 +12,10 @@ export function fetchProjects() {
   }
 }
 
-export function fetchProject(props) {
+export function fetchProject(id) {
   return (dispatch) => {
     dispatch({ type: 'LOADING_PROJECT' })
-    return fetch(`${api_base}/projects/${props.projectId}`)
+    return fetch(`${api_base}/projects/${id}`)
       .then(resp => resp.json())
       .then(project => dispatch({
         type: 'FETCH_PROJECT',
