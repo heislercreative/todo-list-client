@@ -1,4 +1,4 @@
-export default function authReducer(state = [], action) {
+export default function sessionReducer(state = [], action) {
   switch (action.type) {
 
     case 'LOGIN_USER':

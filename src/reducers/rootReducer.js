@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux'
 import userReducer from './userReducer'
-import authReducer from './authReducer'
+import sessionReducer from './sessionReducer'
 import projectReducer from './projectReducer'
 import taskReducer from './taskReducer'
 
 
 const rootReducer = combineReducers({
   user: userReducer,
-  auth: authReducer,
+  session: sessionReducer,
   projects: projectReducer,
   tasks: taskReducer
 });
