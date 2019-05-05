@@ -1,11 +1,57 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as actions from '../actions/projectActions'
+import { Header, Divider } from 'semantic-ui-react'
+
+import ProjectBasic from './ProjectBasic'
 
 class Projects extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      loaded: false
+    }
+  }
+
+  async componentDidMount() {
+    await this.props.actions.fetchProjects()
+    this.setState({ loaded: true })
+  }
+
   render() {
-    return(
-      <h2>Test Content</h2>
+    const { projects } = this.state
+    return (
+      <div>
+        {this.state.loaded &&
+          <div>
+            <Header as='h2' textAlign='center'>
+              Products
+              <Divider hidden />
+            </Header>
+            <div>
+              {projects.map(project =>
+                <ProjectBasic
+                  key={project.id}
+                  id={project.id}
+                  name={project.name}
+                />
+              )}
+            </div>
+        </div>
+      }
+      </div>
     )
   }
 }
 
-export default Projects
+function mapStateToProps(state) {
+  return { projects: state.projects }
+}
+
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators(actions, dispatch) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Projects)
