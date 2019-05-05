@@ -15,7 +15,7 @@ export function fetchProjects() {
 export function fetchProject(props) {
   return (dispatch) => {
     dispatch({ type: 'LOADING_PROJECT' })
-    return fetch(`/api/projects/${props.projectId}`)
+    return fetch(`${api_base}/projects/${props.projectId}`)
       .then(resp => resp.json())
       .then(project => dispatch({
         type: 'FETCH_PROJECT',
