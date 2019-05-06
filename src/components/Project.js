@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/projectActions'
-import { Table } from 'semantic-ui-react'
+import { Segment, Grid } from 'semantic-ui-react'
 
+import TaskForm from './TaskForm'
 import Task from './Task'
 
 class Project extends Component {
@@ -21,14 +22,15 @@ class Project extends Component {
   }
 
   render() {
-    const { name, tasks } = this.props.project
+    const { name, id, tasks } = this.props.project
     return (
       <div>
         {this.state.loaded &&
           <div>
             <h2>{name}</h2>
-            <Table>
-              <Table.Body>
+            <TaskForm projectId={id} />
+            <Segment>
+            <Grid container>
               {tasks.map(task =>
                 <Task
                   key={task.id}
@@ -37,8 +39,8 @@ class Project extends Component {
                   completed={task.completed}
                 />
               )}
-              </Table.Body>
-            </Table>
+            </Grid>
+            </Segment>
           </div>
         }
       </div>

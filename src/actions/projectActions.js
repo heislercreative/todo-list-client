@@ -6,7 +6,7 @@ export function fetchProjects() {
     return fetch(`${api_base}/users/1/projects`)
       .then(resp => resp.json())
       .then(projects => dispatch({
-        type: 'FETCH_PRODUCTS',
+        type: 'FETCH_PROJECTS',
         payload: projects
       }))
   }
