@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/projectActions'
+import { Table } from 'semantic-ui-react'
 
 import Task from './Task'
 
@@ -20,20 +21,24 @@ class Project extends Component {
   }
 
   render() {
-    const { name, id, tasks } = this.props.project
+    const { name, tasks } = this.props.project
     return (
       <div>
         {this.state.loaded &&
           <div>
             <h2>{name}</h2>
-            {tasks.map(task =>
-              <Task
-                key={task.id}
-                id={task.id}
-                text={task.text}
-                completed={task.completed}
-              />
-            )}
+            <Table>
+              <Table.Body>
+              {tasks.map(task =>
+                <Task
+                  key={task.id}
+                  id={task.id}
+                  text={task.text}
+                  completed={task.completed}
+                />
+              )}
+              </Table.Body>
+            </Table>
           </div>
         }
       </div>

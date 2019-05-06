@@ -15,28 +15,30 @@ class TopMenu extends Component {
     const { activeItem } = this.state
 
     return(
-      <Menu>
-        <Menu.Item
-          as={Link} to='/projects'
-          name='home'
-          active={activeItem === 'home'}
-          onClick={this.handleMenuClick}
-        >
-          <Icon name='clipboard'/> Projects
-        </Menu.Item>
-
-        <Menu.Menu position='right'>
+      <Sticky>
+        <Menu>
           <Menu.Item
-            as={Link} to='/account'
-            name='account'
-            active={activeItem === 'account'}
+            as={Link} to='/projects'
+            name='home'
+            active={activeItem === 'home'}
             onClick={this.handleMenuClick}
           >
-            <Icon name='user circle'/>
+            <Icon name='clipboard'/> Projects
           </Menu.Item>
-          <Logout />
-        </Menu.Menu>
-      </Menu>
+
+          <Menu.Menu position='right'>
+            <Menu.Item
+              as={Link} to='/account'
+              name='account'
+              active={activeItem === 'account'}
+              onClick={this.handleMenuClick}
+            >
+              <Icon name='user circle'/>
+            </Menu.Item>
+            <Logout />
+          </Menu.Menu>
+        </Menu>
+      </Sticky>
     )
   }
 }

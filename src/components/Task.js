@@ -2,19 +2,21 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/taskActions'
-import { Segment, Icon } from 'semantic-ui-react'
+import { Table, Checkbox } from 'semantic-ui-react'
 
 class Project extends Component {
 
   render() {
     const { text, completed } = this.props
     return (
-      <Segment>
-        <p>
+      <Table.Row>
+        <Table.Cell>
           {text}
-          <Icon name='remove' />
-        </p>
-      </Segment>
+        </Table.Cell>
+        <Table.Cell textAlign='right'>
+          <Checkbox />
+        </Table.Cell>
+      </Table.Row>
     )
   }
 }
