@@ -1,9 +1,9 @@
 const api_base = '/api/v1'
 
-export function fetchProjects() {
+export function fetchProjects(userId) {
   return (dispatch) => {
     dispatch({ type: 'LOADING_PROJECTS' })
-    return fetch(`${api_base}/users/1/projects`)
+    return fetch(`${api_base}/users/${userId}/projects`)
       .then(resp => resp.json())
       .then(projects => dispatch({
         type: 'FETCH_PROJECTS',

@@ -29,7 +29,7 @@ class Logout extends Component {
           <Icon name='sign-out'/>
         </Menu.Item>}
       >
-        <Header icon='sign-out' content="Are you sure you'd like to log out?" />
+        <Header icon='sign-out' content="Are you sure you want to log out?" />
         <Modal.Actions>
           <Button color='red' inverted onClick={this.closeModal}>
             <Icon name='remove' /> No

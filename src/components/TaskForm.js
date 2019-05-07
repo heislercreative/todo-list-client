@@ -32,7 +32,7 @@ class TaskForm extends Component {
   render(){
     return(
       <div className='form-container'>
-        <Form id='task-form' onSubmit={this.handleSubmit}>
+        <Form id='task-form'>
           <Form.Field>
             <Form.Input
               name='text'

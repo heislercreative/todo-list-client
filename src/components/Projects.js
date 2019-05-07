@@ -8,23 +8,16 @@ import ProjectBasic from './ProjectBasic'
 
 class Projects extends Component {
 
-  constructor() {
-    super()
-    this.state = {
-      loaded: false
-    }
-  }
-
-  async componentDidMount() {
-    await this.props.actions.fetchProjects()
-    this.setState({ loaded: true })
+  componentDidMount() {
+    // this.props.actions.fetchProjects(userId)
+    this.props.actions.fetchProjects(1)
   }
 
   render() {
     const projects = this.props.projects
     return (
       <div>
-        {this.state.loaded &&
+        {this.props.loaded &&
           <div>
             <Header as='h2' textAlign='center'>
               Projects
@@ -47,7 +40,11 @@ class Projects extends Component {
 }
 
 function mapStateToProps(state) {
-  return { projects: state.projects.list }
+  return {
+    // userId: state.user.id,
+    projects: state.projects.list,
+    loaded: state.projects.listLoaded
+  }
 }
 
 function mapDispatchToProps(dispatch) {
