@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Segment, Divider } from 'semantic-ui-react'
+import { Segment } from 'semantic-ui-react'
 
 const ProjectLink = ({ id, name }) => {
 

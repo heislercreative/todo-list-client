@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as actions from '../actions/userActions'
+import * as actions from '../actions/taskActions'
 import { Modal, Menu, Header, Button, Icon } from 'semantic-ui-react'
 
-class Logout extends Component {
+class DeleteTask extends Component {
   constructor(){
     super()
     this.state = {
@@ -21,19 +21,23 @@ class Logout extends Component {
   }
 
   handleClick = () => {
-    this.props.actions.logoutUser()
+    this.props.actions.deleteTask(this.props.id)
   }
 
   render() {
     const { showModal } = this.state
+    const { text } = this.props
 
     return(
       <Modal open={showModal} size='tiny' centered={false} trigger={
         <Menu.Item onClick={this.openModal}>
-          <Icon name='sign-out'/>
+          <Icon name='remove'/>
         </Menu.Item>}
       >
-        <Header icon='sign-out' content="Are you sure you want to log out?" />
+        <Header icon='trash' content="Are you sure you want to delete this task?" />
+        <Modal.Content>
+          <p>{text}</p>
+        </Modal.Content>
         <Modal.Actions>
           <Button color='red' inverted onClick={this.closeModal}>
             <Icon name='remove' /> No
@@ -47,12 +51,8 @@ class Logout extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { session: state.session }
-}
-
 function mapDispatchToProps(dispatch) {
   return { actions: bindActionCreators(actions, dispatch) }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Logout)
+export default connect(null, mapDispatchToProps)(DeleteTask)

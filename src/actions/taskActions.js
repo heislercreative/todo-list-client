@@ -14,3 +14,13 @@ export function createTask(projectId, text) {
       }))
   }
 }
+
+export function deleteTask(taskId) {
+  return (dispatch) => {
+    dispatch({ type: 'DELETING_TASK' })
+    return fetch(`${api_base}/tasks/${taskId}`, {
+      method: 'DELETE',
+      credentials: 'same-origin'
+    })
+  }
+}

@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/taskActions'
-import { Grid, Checkbox, Icon } from 'semantic-ui-react'
+import { Grid, Checkbox } from 'semantic-ui-react'
+
+import DeleteTask from './DeleteTask'
 
 class Task extends Component {
 
   render() {
-    const { text, completed } = this.props
+    const { id, text, completed } = this.props
     return (
       <Grid.Row>
         <Grid.Column width={11} textAlign='left'>
@@ -17,7 +19,7 @@ class Task extends Component {
           <Checkbox />
         </Grid.Column>
         <Grid.Column width={1}>
-          <Icon name='remove' />
+          <DeleteTask id={id} text={text} />
         </Grid.Column>
       </Grid.Row>
     )
