@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Segment, Divider } from 'semantic-ui-react'
 
-const ProjectBasic = ({ id, name }) => {
+const ProjectLink = ({ id, name }) => {
 
   return (
     <div>
@@ -15,4 +15,4 @@ const ProjectBasic = ({ id, name }) => {
   )
 }
 
-export default ProjectBasic
+export default ProjectLink

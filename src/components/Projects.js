@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import * as actions from '../actions/projectActions'
 import { Header, Divider } from 'semantic-ui-react'
 
-import ProjectBasic from './ProjectBasic'
+import ProjectLink from './ProjectLink'
 
 class Projects extends Component {
 
@@ -25,7 +25,7 @@ class Projects extends Component {
             </Header>
             <div>
               {projects.map(project =>
-                <ProjectBasic
+                <ProjectLink
                   key={project.id}
                   id={project.id}
                   name={project.name}
