@@ -15,10 +15,10 @@ export function createTask(projectId, text) {
   }
 }
 
-export function editTask(taskId) {
+export function editTask(id) {
   return (dispatch) => {
     dispatch({ type: 'DELETING_TASK' })
-    return fetch(`${api_base}/tasks/${taskId}`, {
+    return fetch(`${api_base}/tasks/${id}`, {
       method: 'PATCH',
       credentials: 'same-origin'
     })
@@ -29,10 +29,10 @@ export function editTask(taskId) {
   }
 }
 
-export function deleteTask(taskId) {
+export function deleteTask(id) {
   return (dispatch) => {
     dispatch({ type: 'DELETING_TASK' })
-    return fetch(`${api_base}/tasks/${taskId}`, {
+    return fetch(`${api_base}/tasks/${id}`, {
       method: 'DELETE',
       credentials: 'same-origin'
     })

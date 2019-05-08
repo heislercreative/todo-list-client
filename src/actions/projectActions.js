@@ -23,3 +23,17 @@ export function fetchProject(id) {
       }))
   }
 }
+
+export function deleteProject(id) {
+  return (dispatch) => {
+    dispatch({ type: 'DELETING_PROJECT' })
+    return fetch(`${api_base}/projects/${id}`, {
+      method: 'DELETE',
+      credentials: 'same-origin'
+    })
+    // .then(project => dispatch({
+    //   type: 'FETCH_PROJECT',
+    //   payload: project
+    // }))
+  }
+}

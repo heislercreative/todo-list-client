@@ -6,6 +6,7 @@ import { Segment, Grid } from 'semantic-ui-react'
 
 import TaskForm from './TaskForm'
 import Task from './Task'
+import DeleteProject from './DeleteProject'
 
 class Project extends Component {
 
@@ -21,18 +22,21 @@ class Project extends Component {
           <div>
             <h2>{name}</h2>
             <TaskForm projectId={id} />
-            <Segment>
-              <Grid container>
-                {tasks.map(task =>
-                  <Task
-                    key={task.id}
-                    id={task.id}
-                    text={task.text}
-                    completed={task.completed}
-                  />
-                )}
-              </Grid>
-            </Segment>
+            {tasks.length > 0 &&
+              <Segment>
+                <Grid container>
+                  {tasks.map(task =>
+                    <Task
+                      key={task.id}
+                      id={task.id}
+                      text={task.text}
+                      completed={task.completed}
+                    />
+                  )}
+                </Grid>
+              </Segment>
+            }
+            <DeleteProject id={id} name={name} tasks={tasks} />
           </div>
         }
       </div>
