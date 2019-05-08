@@ -8,10 +8,24 @@ export function createTask(projectId, text) {
         body: new FormData(document.getElementById("task-form")),
         credentials: 'same-origin'
       })
-      .then(project => dispatch({
-        type: 'FETCH_PROJECT',
-        payload: project
-      }))
+      // .then(project => dispatch({
+      //   type: 'FETCH_PROJECT',
+      //   payload: project
+      // }))
+  }
+}
+
+export function editTask(taskId) {
+  return (dispatch) => {
+    dispatch({ type: 'DELETING_TASK' })
+    return fetch(`${api_base}/tasks/${taskId}`, {
+      method: 'PATCH',
+      credentials: 'same-origin'
+    })
+    // .then(project => dispatch({
+    //   type: 'FETCH_PROJECT',
+    //   payload: project
+    // }))
   }
 }
 
@@ -22,5 +36,9 @@ export function deleteTask(taskId) {
       method: 'DELETE',
       credentials: 'same-origin'
     })
+    // .then(project => dispatch({
+    //   type: 'FETCH_PROJECT',
+    //   payload: project
+    // }))
   }
 }

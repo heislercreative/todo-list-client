@@ -8,15 +8,19 @@ import DeleteTask from './DeleteTask'
 
 class Task extends Component {
 
+  handleChange = () => {
+    this.props.actions.editTask(this.props.id)
+  }
+
   render() {
     const { id, text, completed } = this.props
     return (
       <Grid.Row>
+        <Grid.Column width={1}>
+          <Checkbox checked={completed} onChange={this.handleChange}/>
+        </Grid.Column>
         <Grid.Column width={11} textAlign='left'>
           {text}
-        </Grid.Column>
-        <Grid.Column width={2}>
-          <Checkbox />
         </Grid.Column>
         <Grid.Column width={1}>
           <DeleteTask id={id} text={text} />
