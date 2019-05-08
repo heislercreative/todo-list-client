@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/projectActions'
-import { Header, Divider } from 'semantic-ui-react'
+import { Header, Divider, Menu } from 'semantic-ui-react'
 
+import ProjectForm from './ProjectForm'
 import ProjectLink from './ProjectLink'
 
 class Projects extends Component {
@@ -23,15 +24,18 @@ class Projects extends Component {
               Projects
               <Divider hidden />
             </Header>
-            <div>
+            {/* Update userId from hard-coded number */}
+            <ProjectForm type={'create'} userId={1}/>
+            <Menu vertical>
               {projects.map(project =>
                 <ProjectLink
                   key={project.id}
                   id={project.id}
                   name={project.name}
+                  tasks={project.tasks}
                 />
               )}
-            </div>
+            </Menu>
         </div>
       }
       </div>

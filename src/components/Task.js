@@ -9,7 +9,7 @@ import DeleteTask from './DeleteTask'
 class Task extends Component {
 
   handleChange = () => {
-    this.props.actions.editTask(this.props.id)
+    this.props.actions.updateTask(this.props.id)
   }
 
   render() {

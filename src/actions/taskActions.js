@@ -1,6 +1,6 @@
 const api_base = '/api/v1'
 
-export function createTask(projectId, text) {
+export function createTask(projectId) {
   return (dispatch) => {
       dispatch({ type: 'CREATING_TASK' })
       return fetch(`${api_base}/projects/${projectId}/tasks`, {
@@ -15,7 +15,7 @@ export function createTask(projectId, text) {
   }
 }
 
-export function editTask(id) {
+export function updateTask(id) {
   return (dispatch) => {
     dispatch({ type: 'DELETING_TASK' })
     return fetch(`${api_base}/tasks/${id}`, {

@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/projectActions'
-import { Segment, Grid } from 'semantic-ui-react'
+import { Segment, Grid, Menu } from 'semantic-ui-react'
 
 import TaskForm from './TaskForm'
 import Task from './Task'
+import EditProject from './EditProject'
 import DeleteProject from './DeleteProject'
 
 class Project extends Component {
@@ -36,7 +37,11 @@ class Project extends Component {
                 </Grid>
               </Segment>
             }
+            {/* Update userId from hard-coded number */}
+            <Menu secondary>
+            <EditProject id={id} name={name} userId={1} />
             <DeleteProject id={id} name={name} tasks={tasks} />
+            </Menu>
           </div>
         }
       </div>
@@ -46,6 +51,7 @@ class Project extends Component {
 
 function mapStateToProps(state, ownProps) {
   return {
+    // userId: state.user.id,
     project: state.projects.selected,
     loaded: state.projects.selectedLoaded,
     id: ownProps.match.params.projectId

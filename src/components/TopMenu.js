@@ -16,7 +16,7 @@ class TopMenu extends Component {
 
     return(
       <Sticky>
-        <Menu>
+        <Menu inverted>
           <Menu.Item
             as={Link} to='/projects'
             name='home'

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/taskActions'
-import { Modal, Menu, Header, Button, Icon } from 'semantic-ui-react'
+import { Modal, Header, Button, Icon } from 'semantic-ui-react'
 
 class DeleteTask extends Component {
   constructor(){
@@ -30,9 +30,7 @@ class DeleteTask extends Component {
 
     return(
       <Modal open={showModal} size='tiny' centered={false} trigger={
-        <Menu.Item onClick={this.openModal}>
-          <Icon name='remove'/>
-        </Menu.Item>}
+        <Icon name='remove' onClick={this.openModal} />}
       >
         <Header icon='trash' content="Are you sure you want to delete this task?" />
         <Modal.Content>

@@ -1,17 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Segment } from 'semantic-ui-react'
+import { Menu, Label } from 'semantic-ui-react'
 
-const ProjectLink = ({ id, name }) => {
+const ProjectLink = ({ id, name, tasks }) => {
 
   return (
-    <div>
-      <Link className='project-link' to={`/projects/${id}`}>
-        <Segment textAlign='left'>
-          <h4>{name}</h4>
-        </Segment>
-      </Link>
-    </div>
+    <Menu.Item
+      as={Link} to={`/projects/${id}`}
+      name={name}
+    >
+      <Label color='teal'>{tasks.length}</Label>
+      {name}
+    </Menu.Item>
   )
 }
 

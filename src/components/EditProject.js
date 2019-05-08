@@ -5,7 +5,10 @@ import { withRouter } from 'react-router-dom'
 import * as actions from '../actions/projectActions'
 import { Modal, Menu, Header, Button, Icon } from 'semantic-ui-react'
 
-class DeleteProject extends Component {
+import ProjectForm from './ProjectForm'
+
+class EditProject extends Component {
+
   constructor(){
     super()
     this.state = {
@@ -22,30 +25,30 @@ class DeleteProject extends Component {
   }
 
   handleClick = async () => {
-    await this.props.actions.deleteProject(this.props.id)
-    this.props.history.push('/projects')
+    await this.props.actions.updateProject(this.props.id)
+    this.closeModal()
   }
 
   render() {
     const { showModal } = this.state
-    const { name, tasks } = this.props
+    const { name, id, userId } = this.props
 
     return(
       <Modal open={showModal} size='tiny' centered={false} trigger={
         <Menu.Item onClick={this.openModal}>
-          <Icon name='trash'/> Delete Project
+          <Icon name='edit'/> Rename Project
         </Menu.Item>}
       >
-        <Header icon='trash' content="Are you sure you want to delete this project and all of its tasks?" />
+        <Header icon='edit' content="Rename Project" />
         <Modal.Content>
-          <p>{name} ({tasks.length} tasks)</p>
+          <ProjectForm type={'update'} id={id} name={name} userId={userId} />
         </Modal.Content>
         <Modal.Actions>
           <Button color='red' inverted onClick={this.closeModal}>
-            <Icon name='remove' /> No
+            <Icon name='remove' /> Cancel
           </Button>
-          <Button color='green' inverted onClick={this.handleClick}>
-            <Icon name='checkmark' /> Yes
+          <Button color='blue' inverted onClick={this.handleClick}>
+            <Icon name='checkmark' /> Rename
           </Button>
         </Modal.Actions>
       </Modal>
@@ -57,4 +60,4 @@ function mapDispatchToProps(dispatch) {
   return { actions: bindActionCreators(actions, dispatch) }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(DeleteProject))
+export default withRouter(connect(null, mapDispatchToProps)(EditProject))
