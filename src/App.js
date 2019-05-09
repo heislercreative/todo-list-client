@@ -5,6 +5,7 @@ import './App.css'
 
 import TopMenu from './components/TopMenu'
 import Signup from './components/Signup'
+import Login from './components/Login'
 import Projects from './components/Projects'
 import Project from './components/Project'
 
@@ -15,6 +16,7 @@ function App() {
         <TopMenu />
         <Divider hidden />
         <Route exact path="/signup" component={Signup} />
+        <Route exact path="/login" component={Login} />
         <Route exact path="/projects" component={Projects} />
         <Route path="/projects/:projectId" component={Project} />
       </div>

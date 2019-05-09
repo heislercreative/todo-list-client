@@ -27,10 +27,10 @@ export function updateUser(props) {
 export function loginUser() {
   return (dispatch) => {
     dispatch({ type: 'LOGGING_IN' })
-    return fetch(`${api_base}/sessions`, {
+    return fetch(`${api_base}/auth`, {
       method: 'POST',
       body: new FormData(document.getElementById("login-form")),
-      credentials: 'same-origin'
+      credentials: 'include'
     })
     .then(resp => loginOptions(resp, dispatch))
   }
@@ -50,11 +50,15 @@ function loginOptions(resp, dispatch) {
 
 export function logoutUser() {
   return (dispatch) => {
-    const user = {}
-    dispatch({
+    dispatch({ type: 'LOGGING_OUT' })
+    return fetch(`${api_base}/auth`, {
+      method: 'DELETE',
+      credentials: 'include'
+    })
+    .then(user => dispatch({
       type: 'LOGOUT_USER',
       payload: user
-    })
+    }))
     .then(window.location = '/')
   }
 }

@@ -13,11 +13,11 @@ class Task extends Component {
   }
 
   render() {
-    const { id, text, completed } = this.props
+    const { id, text, completion } = this.props
     return (
       <Grid.Row>
         <Grid.Column width={1}>
-          <Checkbox checked={completed} onChange={this.handleChange}/>
+          <Checkbox checked={completion} onChange={this.handleChange}/>
         </Grid.Column>
         <Grid.Column width={11} textAlign='left'>
           {text}

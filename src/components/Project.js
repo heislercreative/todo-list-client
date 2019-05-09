@@ -31,7 +31,7 @@ class Project extends Component {
                       key={task.id}
                       id={task.id}
                       text={task.text}
-                      completed={task.completed}
+                      completion={task.completion}
                     />
                   )}
                 </Grid>

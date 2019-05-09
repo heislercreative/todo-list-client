@@ -10,12 +10,14 @@ import ProjectLink from './ProjectLink'
 class Projects extends Component {
 
   componentDidMount() {
-    // this.props.actions.fetchProjects(userId)
+    // this.props.actions.fetchProjects(this.props.user.id)
     this.props.actions.fetchProjects(1)
   }
 
   render() {
     const projects = this.props.projects
+    const user = this.props.user
+
     return (
       <div>
         {this.props.loaded &&
@@ -45,7 +47,7 @@ class Projects extends Component {
 
 function mapStateToProps(state) {
   return {
-    // userId: state.user.id,
+    user: state.user,
     projects: state.projects.list,
     loaded: state.projects.listLoaded
   }
