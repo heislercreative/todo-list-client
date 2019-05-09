@@ -15,7 +15,7 @@ class ProjectForm extends Component {
 
   handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      name: e.target.value
     })
   }
 
@@ -44,7 +44,7 @@ class ProjectForm extends Component {
           <Form.Field>
             {type === 'create' ?
               <Form.Input
-                name='name'
+                name='project[name]'
                 type='text'
                 placeholder='Create a project...'
                 icon={<Icon name='plus' link onClick={this.handleClick}/>}
@@ -54,7 +54,7 @@ class ProjectForm extends Component {
               />
             :
               <Form.Input
-                name='name'
+                name='project[name]'
                 type='text'
                 placeholder={name}
                 value={this.state.text}
@@ -65,7 +65,7 @@ class ProjectForm extends Component {
           </Form.Field>
           <Form.Field>
             <input
-              name='user_id'
+              name='project[user_id]'
               type='hidden'
               value={userId}
             />

@@ -15,7 +15,7 @@ class TaskForm extends Component {
 
   handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      text: e.target.value
     })
   }
 
@@ -35,7 +35,7 @@ class TaskForm extends Component {
         <Form id='task-form'>
           <Form.Field>
             <Form.Input
-              name='text'
+              name='task[text]'
               type='text'
               placeholder='Add a task...'
               icon={<Icon name='plus' link onClick={this.handleClick}/>}
@@ -46,7 +46,7 @@ class TaskForm extends Component {
           </Form.Field>
           <Form.Field>
             <input
-              name='project_id'
+              name='task[project_id]'
               type='hidden'
               value={this.props.projectId}
             />

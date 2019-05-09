@@ -10,19 +10,19 @@ class AccountForm extends Component {
     super(props)
     if (props.formType === 'createUser') {
       this.state = {
-        email: '',
-        password: '',
-        password_placeholder: '•••••••',
-        first_name: '',
-        last_name: ''
+        'user[email]': '',
+        'user[password]': '',
+        'user[password_placeholder]': '•••••••',
+        'user[first_name]': '',
+        'user[last_name]': ''
       }
     } else if (props.formType === 'updateUser') {
       this.state = {
-        email: props.user.email,
-        password: '',
-        password_placeholder: 'Please re-enter or change password',
-        first_name: props.user.first_name,
-        last_name: props.user.last_name
+        'user[email]': props.user.email,
+        'user[password]': '',
+        'user[password_placeholder]': 'Please re-enter or change password',
+        'user[first_name]': props.user.first_name,
+        'user[last_name]': props.user.last_name
       }
     }
   }
@@ -52,7 +52,7 @@ class AccountForm extends Component {
             <Form.Field>
               <label>Email</label>
               <input
-                name='email'
+                name='user[email]'
                 type='text'
                 placeholder='name@website.com'
                 value={this.state.email}
@@ -62,7 +62,7 @@ class AccountForm extends Component {
             <Form.Field>
               <label>Password</label>
               <input
-                name='password'
+                name='user[password]'
                 type='password'
                 placeholder={this.state.password_placeholder}
                 value={this.state.password}
@@ -74,7 +74,7 @@ class AccountForm extends Component {
             <Form.Field>
               <label>First Name</label>
               <input
-                name='first_name'
+                name='user[first_name]'
                 type='text'
                 placeholder='Jane'
                 value={this.state.first_name}
@@ -84,7 +84,7 @@ class AccountForm extends Component {
             <Form.Field>
               <label>Last Name</label>
               <input
-                name='last_name'
+                name='user[last_name]'
                 type='text'
                 placeholder='Doe'
                 value={this.state.last_name}
@@ -92,11 +92,16 @@ class AccountForm extends Component {
               />
             </Form.Field>
           </Form.Group>
-
-
-
           <br />
-          <Button primary type='submit'>Submit</Button>
+          <Form.Button
+            primary
+            type='submit'
+            disabled={!this.state['user[email]']
+              || !this.state['user[password]']
+              || !this.state['user[first_name]']
+              || !this.state['user[last_name]']}>
+              Submit
+          </Form.Button>
         </Form>
       </div>
     )

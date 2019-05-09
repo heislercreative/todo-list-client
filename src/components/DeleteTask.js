@@ -30,7 +30,7 @@ class DeleteTask extends Component {
 
     return(
       <Modal open={showModal} size='tiny' centered={false} trigger={
-        <Icon name='remove' onClick={this.openModal} />}
+        <Icon name='remove' link onClick={this.openModal} />}
       >
         <Header icon='trash' content="Are you sure you want to delete this task?" />
         <Modal.Content>
