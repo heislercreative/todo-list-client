@@ -46,17 +46,17 @@ export function fetchUser() {
   }
 }
 
-export function updateUser(props) {
-  return (dispatch) => {
-    dispatch({ type: 'UPDATING_USER' })
-    return fetch(`${api_base}/users/${props.user.id}`, {
-      method: 'POST',
-      body: new FormData(document.getElementById("user-form")),
-      credentials: 'include'
-    })
-    .then(resp => loginOptions(resp, dispatch))
-  }
-}
+// export function updateUser(props) {
+//   return (dispatch) => {
+//     dispatch({ type: 'UPDATING_USER' })
+//     return fetch(`${api_base}/users/${props.user.id}`, {
+//       method: 'POST',
+//       body: new FormData(document.getElementById("user-form")),
+//       credentials: 'include'
+//     })
+//     .then(resp => loginOptions(resp, dispatch))
+//   }
+// }
 
 export function loginUser() {
   return (dispatch) => {
@@ -65,6 +65,22 @@ export function loginUser() {
       method: 'POST',
       body: new FormData(document.getElementById("login-form")),
       credentials: 'include'
+    })
+    .then(resp => loginOptions(resp, dispatch))
+  }
+}
+
+export function loginFacebook(response) {
+  const fb_form = new FormData()
+  for ( var key in response ) {
+    fb_form.append(key, response[key]);
+  }
+  return (dispatch) => {
+    dispatch({ type: 'LOGGING_IN' })
+    return fetch(`${api_base}/auth/facebook`, {
+      method: 'POST',
+      body: fb_form,
+      credentials: 'same-origin'
     })
     .then(resp => loginOptions(resp, dispatch))
   }

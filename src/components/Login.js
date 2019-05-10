@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/userActions'
 import { Link } from 'react-router-dom'
+import FacebookLogin from 'react-facebook-login'
 import { Header, Container, Form, Button, Divider } from 'semantic-ui-react'
 
 class Login extends Component {
@@ -30,6 +31,10 @@ class Login extends Component {
     e.preventDefault()
     await this.props.actions.loginUser()
     setTimeout(this.redirect, 1000)
+  }
+
+  handleFacebookResponse = (response) => {
+    this.props.actions.loginFacebook(response)
   }
 
   render() {
@@ -72,6 +77,16 @@ class Login extends Component {
             </Button>
           </Form>
         </div>
+
+        <Divider horizontal section>OR</Divider>
+        <FacebookLogin
+          appId={2178279118923624}
+          textButton="Log In with Facebook"
+          size="medium"
+          autoLoad={false}
+          fields="email,first_name,last_name"
+          callback={this.handleFacebookResponse}
+        />
         <Divider horizontal section>OR</Divider>
         <Button as={Link} to='/signup' secondary inverted>Sign Up</Button>
       </Container>

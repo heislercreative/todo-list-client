@@ -35,7 +35,7 @@ class App extends Component {
             <Switch>
               <Route exact path='/projects' component={Projects} />
               <Route path='/projects/:projectId' component={Project} />
-              <Redirect from='/' to='/projects' />
+              {/*<Redirect from='/' to='/projects' />*/}
               <Redirect from='/login' to='/projects' />
               <Redirect from='/signup' to='/projects' />
             </Switch>
@@ -43,7 +43,7 @@ class App extends Component {
             <Switch>
               <Route exact path='/signup' component={Signup} />
               <Route exact path='/login' component={Login} />
-              <Redirect from='/' to='/login' />
+              {/*<Redirect from='/' to='/login' />*/}
               <Redirect from='/projects' to='/login' />
               <Redirect from='/projects/:projectId' to='/login' />
             </Switch>
