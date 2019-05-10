@@ -28,16 +28,6 @@ export function fetchProject(id) {
   }
 }
 
-function fetchOptions(resp, dispatch) {
-  if (resp.status === 200) {
-    const project = resp.json()
-    .then(project => dispatch({
-      type: 'FETCH_PROJECT',
-      payload: project
-    }))
-  }
-}
-
 export function createProject() {
   return (dispatch) => {
       dispatch({ type: 'CREATING_TASK' })
