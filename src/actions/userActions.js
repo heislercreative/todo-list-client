@@ -87,7 +87,7 @@ export function loginFacebook(response) {
 }
 
 function loginOptions(resp, dispatch) {
-  if (resp.status === 201) {
+  if (resp.status === 201 ) {
     const user = resp.json()
     .then(user => dispatch({
       type: 'LOGIN_USER',
