@@ -16,10 +16,6 @@ class Projects extends Component {
   render() {
     const projects = this.props.projects
 
-    // if (logged_in_confirmation) {
-    // show, else redirect
-    //}
-
     return (
       <div>
         {this.props.loaded &&

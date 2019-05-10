@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import * as actions from './actions/userActions'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Switch, Redirect } from 'react-router'
-import { Divider } from 'semantic-ui-react'
+import { Container, Divider } from 'semantic-ui-react'
 import './App.css'
 
 import LoggedInMenu from './components/LoggedInMenu'
@@ -30,7 +30,7 @@ class App extends Component {
             <LoggedInMenu /> : <LoggedOutMenu />
           }
           <Divider hidden />
-
+          <Container>
           {userId ?
             <Switch>
               <Route exact path='/projects' component={Projects} />
@@ -48,6 +48,7 @@ class App extends Component {
               <Redirect from='/projects/:projectId' to='/login' />
             </Switch>
           }
+          </Container>
         </div>
       </Router>
     );

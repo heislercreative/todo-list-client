@@ -8,11 +8,27 @@ export function createUser() {
       body: new FormData(document.getElementById("user-form")),
       credentials: 'same-origin'
     })
-      .then(resp => resp.json())
-      .then(user => dispatch({
-        type: 'SIGNUP_USER',
-        payload: user
-      }))
+    .then(resp => signupOptions(resp, dispatch))
+  }
+}
+
+function signupOptions(resp, dispatch) {
+  if (resp.status === 201) {
+    const user = resp.json()
+    .then(user => dispatch({
+      type: 'SIGNUP_USER',
+      payload: user
+    }))
+  } else {
+    const error = resp.json()
+    .then(error => {
+      let msg = ''
+      for (let key in error) {
+        msg += `${key.charAt(0).toUpperCase() + key.slice(1)} ${error[key]}\n`
+      }
+      console.log(msg)
+      window.alert(msg)
+    })
   }
 }
 
@@ -66,7 +82,8 @@ function loginOptions(resp, dispatch) {
     .then(error => {
       const msg = error.error
       console.log(msg)
-      window.alert(msg)})
+      window.alert(msg)
+    })
   }
 }
 
