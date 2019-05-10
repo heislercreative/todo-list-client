@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Menu, Sticky, Icon } from 'semantic-ui-react'
 
-import Logout from './Logout'
-
 class LoggedOutMenu extends Component {
   state = {}
 

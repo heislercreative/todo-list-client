@@ -20,11 +20,21 @@ export function fetchProject(id) {
     return fetch(`${api_base}/projects/${id}`, {
       credentials: 'include'
     })
-      .then(resp => resp.json())
-      .then(project => dispatch({
-        type: 'FETCH_PROJECT',
-        payload: project
-      }))
+    .then(resp => resp.json())
+    .then(project => dispatch({
+      type: 'FETCH_PROJECT',
+      payload: project
+    }))
+  }
+}
+
+function fetchOptions(resp, dispatch) {
+  if (resp.status === 200) {
+    const project = resp.json()
+    .then(project => dispatch({
+      type: 'FETCH_PROJECT',
+      payload: project
+    }))
   }
 }
 

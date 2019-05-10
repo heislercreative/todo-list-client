@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/taskActions'
@@ -66,4 +65,4 @@ function mapDispatchToProps(dispatch) {
   return { actions: bindActionCreators(actions, dispatch) }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(TaskForm))
+export default connect(null, mapDispatchToProps)(TaskForm)

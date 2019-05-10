@@ -16,12 +16,16 @@ import Project from './components/Project'
 
 class App extends Component {
 
-  componentDidMount() {
-    this.props.actions.fetchUser()
+  state = { fetchComplete: false }
+
+  async componentDidMount() {
+    await this.props.actions.fetchUser()
+    this.setState({ fetchComplete: true })
   }
 
   render() {
     const userId = this.props.userId
+    const fetchComplete = this.state.fetchComplete
 
     return (
       <Router>
@@ -30,25 +34,27 @@ class App extends Component {
             <LoggedInMenu /> : <LoggedOutMenu />
           }
           <Divider hidden />
-          <Container>
-          {userId ?
-            <Switch>
-              <Route exact path='/projects' component={Projects} />
-              <Route path='/projects/:projectId' component={Project} />
-              {/*<Redirect from='/' to='/projects' />*/}
-              <Redirect from='/login' to='/projects' />
-              <Redirect from='/signup' to='/projects' />
-            </Switch>
-            :
-            <Switch>
-              <Route exact path='/signup' component={Signup} />
-              <Route exact path='/login' component={Login} />
-              {/*<Redirect from='/' to='/login' />*/}
-              <Redirect from='/projects' to='/login' />
-              <Redirect from='/projects/:projectId' to='/login' />
-            </Switch>
-          }
+          {fetchComplete &&
+            <Container>
+            {userId ?
+              <Switch>
+                <Route exact path='/projects' component={Projects} />
+                <Route path='/projects/:projectId' component={Project} />
+                <Redirect from='/login' to='/projects' />
+                <Redirect from='/signup' to='/projects' />
+                <Redirect from='/' to='/projects' />
+              </Switch>
+              :
+              <Switch>
+                <Route exact path='/signup' component={Signup} />
+                <Route exact path='/login' component={Login} />
+                <Redirect from='/projects' to='/login' />
+                <Redirect from='/projects/:projectId' to='/login' />
+                <Redirect from='/' to='/login' />
+              </Switch>
+            }
           </Container>
+          }
         </div>
       </Router>
     );

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/projectActions'
+import { Redirect } from 'react-router'
 import { Segment, Grid, Menu } from 'semantic-ui-react'
 
 import TaskForm from './TaskForm'
@@ -17,6 +18,7 @@ class Project extends Component {
 
   render() {
     const { name, id, tasks } = this.props.project
+
     return (
       <div>
         {this.props.loaded &&
@@ -50,7 +52,6 @@ class Project extends Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-    // userId: state.user.id,
     project: state.projects.selected,
     loaded: state.projects.selectedLoaded,
     id: ownProps.match.params.projectId
