@@ -19,13 +19,18 @@ class TaskForm extends Component {
     })
   }
 
+  handleSubmit = async () => {
+    await this.props.actions.createTask(this.props.projectId)
+    this.setState({ text: '' })
+  }
+
   handleClick = () => {
-    this.props.actions.createTask(this.props.projectId)
+    this.handleSubmit()
   }
 
   handleKeyPress = (e) => {
     if (e.key === 'Enter'){
-      this.props.actions.createTask(this.props.projectId)
+      this.handleSubmit()
     }
   }
 

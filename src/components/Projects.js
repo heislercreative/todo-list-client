@@ -25,16 +25,18 @@ class Projects extends Component {
               <Divider hidden />
             </Header>
             <ProjectForm type={'create'} />
-            <Menu vertical>
-              {projects.map(project =>
-                <ProjectLink
-                  key={project.id}
-                  id={project.id}
-                  name={project.name}
-                  tasks={project.tasks}
-                />
-              )}
-            </Menu>
+            {projects.length > 0 &&
+              <Menu vertical>
+                {projects.map(project =>
+                  <ProjectLink
+                    key={project.id}
+                    id={project.id}
+                    name={project.name}
+                    tasks={project.tasks}
+                  />
+                )}
+              </Menu>
+            }
         </div>
       }
       </div>

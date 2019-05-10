@@ -19,9 +19,10 @@ class ProjectForm extends Component {
     })
   }
 
-  handleSubmit = () => {
+  handleSubmit = async () => {
     if (this.props.type === 'create') {
-      this.props.actions.createProject(this.props.userId)
+      await this.props.actions.createProject()
+      this.props.actions.fetchProjects()
     }
   }
 

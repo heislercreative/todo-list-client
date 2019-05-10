@@ -20,10 +20,16 @@ class Login extends Component {
     })
   }
 
+  redirect = () => {
+    if (this.props.user !== '') {
+      this.props.history.push('/projects')
+    }
+  }
+
   handleSubmit = async (e) => {
     e.preventDefault()
     await this.props.actions.loginUser()
-    this.props.history.push('/projects')
+    setTimeout(this.redirect, 1000)
   }
 
   render() {
@@ -58,6 +64,7 @@ class Login extends Component {
             <br />
             <Button
               primary
+              inverted
               type='submit'
               disabled={!this.state.email || !this.state.password}
             >
@@ -66,14 +73,14 @@ class Login extends Component {
           </Form>
         </div>
         <Divider horizontal section>OR</Divider>
-        <Button as={Link} to='/signup' secondary>Sign Up</Button>
+        <Button as={Link} to='/signup' secondary inverted>Sign Up</Button>
       </Container>
     )
   }
 }
 
 function mapStateToProps(state) {
-  return { user: state.user }
+  return { user: state.user.current }
 }
 
 function mapDispatchToProps(dispatch) {

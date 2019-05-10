@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { withRouter } from 'react-router-dom'
 import * as actions from '../actions/userActions'
 import { Modal, Menu, Header, Button, Icon } from 'semantic-ui-react'
 
@@ -20,8 +21,10 @@ class Logout extends Component {
     this.setState({ showModal: false })
   }
 
-  handleClick = () => {
-    this.props.actions.logoutUser()
+  handleClick = async () => {
+    await this.props.actions.logoutUser()
+    this.props.history.push('/login')
+    this.setState({ showModal: false })
   }
 
   render() {
@@ -55,4 +58,4 @@ function mapDispatchToProps(dispatch) {
   return { actions: bindActionCreators(actions, dispatch) }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Logout)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Logout))

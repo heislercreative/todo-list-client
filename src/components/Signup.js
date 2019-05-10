@@ -14,7 +14,7 @@ class Signup extends Component {
         </Header>
         <UserForm formType={'createUser'} />
         <Divider horizontal section>OR</Divider>
-        <Button as={Link} to='/login' secondary>Log In</Button>
+        <Button as={Link} to='/login' secondary inverted>Log In</Button>
       </Container>
     )
   }

@@ -94,6 +94,7 @@ class AccountForm extends Component {
           <br />
           <Form.Button
             primary
+            inverted
             type='submit'
             disabled={!this.state['user[email]']
               || !this.state['user[password]']
@@ -108,7 +109,7 @@ class AccountForm extends Component {
 }
 
 function mapStateToProps(state) {
-  return { user: state.user }
+  return { user: state.user.current }
 }
 
 function mapDispatchToProps(dispatch) {

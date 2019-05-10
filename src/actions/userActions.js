@@ -63,6 +63,5 @@ export function logoutUser() {
       type: 'LOGOUT_USER',
       payload: user
     }))
-    .then(window.location = '/')
   }
 }

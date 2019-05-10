@@ -1,6 +1,6 @@
 const api_base = '/api/v1'
 
-export function fetchProjects(userId) {
+export function fetchProjects() {
   return (dispatch) => {
     dispatch({ type: 'LOADING_PROJECTS' })
     return fetch(`${api_base}/projects`, {
@@ -28,7 +28,7 @@ export function fetchProject(id) {
   }
 }
 
-export function createProject(userId) {
+export function createProject() {
   return (dispatch) => {
       dispatch({ type: 'CREATING_TASK' })
       return fetch(`${api_base}/projects`, {
@@ -36,10 +36,11 @@ export function createProject(userId) {
         body: new FormData(document.getElementById("project-form")),
         credentials: 'include'
       })
-      // .then(project => dispatch({
-      //   type: 'FETCH_PROJECT',
-      //   payload: project
-      // }))
+      .then(resp => resp.json())
+      .then(project => dispatch({
+        type: 'FETCH_PROJECT',
+        payload: project
+      }))
   }
 }
 
@@ -51,10 +52,11 @@ export function updateProject(id) {
         body: new FormData(document.getElementById("project-form")),
         credentials: 'include'
       })
-      // .then(project => dispatch({
-      //   type: 'FETCH_PROJECT',
-      //   payload: project
-      // }))
+      .then(resp => resp.json())
+      .then(project => dispatch({
+        type: 'FETCH_PROJECT',
+        payload: project
+      }))
   }
 }
 
@@ -65,9 +67,10 @@ export function deleteProject(id) {
       method: 'DELETE',
       credentials: 'include'
     })
-    // .then(project => dispatch({
-    //   type: 'FETCH_PROJECT',
-    //   payload: project
+    // .then(resp => resp.json())
+    // .then(projects => dispatch({
+    //   type: 'FETCH_PROJECTS',
+    //   payload: projects
     // }))
   }
 }

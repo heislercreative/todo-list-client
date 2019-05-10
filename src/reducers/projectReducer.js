@@ -32,6 +32,38 @@ export default function projectReducer(state = {
         selectedLoaded: true
       }
 
+    case 'FETCH_TASKS':
+      return {
+        ...state,
+        selected: {
+          ...state.selected,
+          tasks: action.payload
+        }
+      }
+
+    case 'CREATE_TASK':
+      return {
+        ...state,
+        selected: {
+          ...state.selected,
+          tasks: [
+            ...state.selected.tasks, action.payload
+            ]
+        }
+      }
+
+      // case 'UPDATE_TASK':
+      //   return {
+      //     ...state,
+      //     selected: {
+      //       ...state.selected,
+      //       tasks: [
+      //         ...state.selected.tasks,
+      //         state.selected.tasks[action.payload.id] = action.payload
+      //         ]
+      //     }
+      //   }
+
     default:
       return state
   }
