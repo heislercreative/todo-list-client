@@ -16,6 +16,20 @@ export function createUser() {
   }
 }
 
+export function fetchUser() {
+  return (dispatch) => {
+    dispatch({ type: 'FETCHING_USER' })
+    return fetch(`${api_base}/user`, {
+      credentials: 'include'
+    })
+    .then(resp => resp.json())
+    .then(user => dispatch({
+      type: 'LOGIN_USER',
+      payload: user
+    }))
+  }
+}
+
 export function updateUser(props) {
   return (dispatch) => {
     dispatch({ type: 'UPDATING_USER' })
@@ -48,7 +62,11 @@ function loginOptions(resp, dispatch) {
       payload: user
     }))
   } else {
-    console.log('error')
+    const error = resp.json()
+    .then(error => {
+      const msg = error.error
+      console.log(msg)
+      window.alert(msg)})
   }
 }
 
