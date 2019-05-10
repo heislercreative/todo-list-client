@@ -7,7 +7,8 @@ import { Switch, Redirect } from 'react-router'
 import { Divider } from 'semantic-ui-react'
 import './App.css'
 
-import TopMenu from './components/TopMenu'
+import LoggedInMenu from './components/LoggedInMenu'
+import LoggedOutMenu from './components/LoggedOutMenu'
 import Signup from './components/Signup'
 import Login from './components/Login'
 import Projects from './components/Projects'
@@ -25,8 +26,11 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <TopMenu />
+          {userId ?
+            <LoggedInMenu /> : <LoggedOutMenu />
+          }
           <Divider hidden />
+
           {userId ?
             <Switch>
               <Route exact path='/projects' component={Projects} />

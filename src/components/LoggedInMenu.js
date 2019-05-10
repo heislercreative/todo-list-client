@@ -4,7 +4,7 @@ import { Menu, Sticky, Icon } from 'semantic-ui-react'
 
 import Logout from './Logout'
 
-class TopMenu extends Component {
+class LoggedInMenu extends Component {
   state = {}
 
   handleMenuClick = (e, { name }) => this.setState({
@@ -17,24 +17,18 @@ class TopMenu extends Component {
     return(
       <Sticky>
         <Menu inverted>
+          <Menu.Item>
+            <Icon name='clipboard'/>
+          </Menu.Item>
           <Menu.Item
             as={Link} to='/projects'
             name='home'
             active={activeItem === 'home'}
             onClick={this.handleMenuClick}
           >
-            <Icon name='clipboard'/> Projects
+            Projects
           </Menu.Item>
-
           <Menu.Menu position='right'>
-            <Menu.Item
-              as={Link} to='/account'
-              name='account'
-              active={activeItem === 'account'}
-              onClick={this.handleMenuClick}
-            >
-              <Icon name='user circle'/>
-            </Menu.Item>
             <Logout />
           </Menu.Menu>
         </Menu>
@@ -43,4 +37,4 @@ class TopMenu extends Component {
   }
 }
 
-export default TopMenu
+export default LoggedInMenu
