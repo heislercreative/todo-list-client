@@ -8,7 +8,7 @@ import UserForm from './UserForm'
 class Signup extends Component {
   render() {
     return(
-      <Container>
+      <Container text>
         <Header as='h2' textAlign='center'>
           Create a New Account
           <Divider hidden />
@@ -18,7 +18,7 @@ class Signup extends Component {
         <FacebookLogin
           appId={2178279118923624}
           textButton="Sign Up with Facebook"
-          size="medium"
+          size="small"
           autoLoad={false}
           fields="email,first_name,last_name"
           callback={this.handleFacebookResponse}

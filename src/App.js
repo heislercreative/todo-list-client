@@ -53,6 +53,7 @@ class App extends Component {
                 <Redirect from='/' to='/login' />
               </Switch>
             }
+            <Divider hidden />
           </Container>
           }
         </div>

@@ -19,7 +19,7 @@ class Task extends Component {
         <Grid.Column width={1}>
           <Checkbox checked={completion} onChange={this.handleChange}/>
         </Grid.Column>
-        <Grid.Column width={11} textAlign='left'>
+        <Grid.Column width={13} textAlign='left'>
           {text}
         </Grid.Column>
         <Grid.Column width={1}>

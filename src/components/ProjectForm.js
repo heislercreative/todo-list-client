@@ -39,7 +39,6 @@ class ProjectForm extends Component {
     const { type, name } = this.props
 
     return(
-      <div className='form-container'>
         <Form id='project-form'>
           <Form.Field>
             {type === 'create' ?
@@ -64,7 +63,6 @@ class ProjectForm extends Component {
             }
           </Form.Field>
         </Form>
-      </div>
     )
   }
 }

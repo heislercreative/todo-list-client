@@ -39,7 +39,7 @@ class Login extends Component {
 
   render() {
     return(
-      <Container>
+      <Container text>
         <Header as='h2' textAlign='center'>
           Log In To Your Account
           <Divider hidden />
@@ -82,7 +82,7 @@ class Login extends Component {
         <FacebookLogin
           appId={2178279118923624}
           textButton="Log In with Facebook"
-          size="medium"
+          size="small"
           autoLoad={false}
           fields="email,first_name,last_name"
           callback={this.handleFacebookResponse}

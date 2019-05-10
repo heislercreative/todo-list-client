@@ -26,8 +26,8 @@ class Project extends Component {
             <h2>{name}</h2>
             <TaskForm projectId={id} />
             {tasks.length > 0 &&
-              <Segment>
-                <Grid container>
+              <Segment className='task-container'>
+                <Grid>
                   {tasks.map(task =>
                     <Task
                       key={task.id}
@@ -39,9 +39,9 @@ class Project extends Component {
                 </Grid>
               </Segment>
             }
-            <Menu secondary>
-            <EditProject id={id} name={name} />
-            <DeleteProject id={id} name={name} tasks={tasks} />
+            <Menu secondary className='bottom-menu'>
+              <EditProject id={id} name={name} />
+              <DeleteProject id={id} name={name} tasks={tasks} />
             </Menu>
           </div>
         }

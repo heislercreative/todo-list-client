@@ -7,7 +7,7 @@ const ProjectLink = ({ id, name, tasks }) => {
   return (
     <Menu.Item
       as={Link} to={`/projects/${id}`}
-      name={name}
+      name={name} className='project-link'
     >
       <Label color='teal'>{tasks.length}</Label>
       {name}

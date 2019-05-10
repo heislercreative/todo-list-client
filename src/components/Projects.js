@@ -26,7 +26,7 @@ class Projects extends Component {
             </Header>
             <ProjectForm type={'create'} />
             {projects.length > 0 &&
-              <Menu vertical>
+              <Menu vertical className='project-menu'>
                 {projects.map(project =>
                   <ProjectLink
                     key={project.id}
