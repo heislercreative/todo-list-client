@@ -31,7 +31,7 @@ class EditProject extends Component {
 
   render() {
     const { showModal } = this.state
-    const { name, id, userId } = this.props
+    const { name, id } = this.props
 
     return(
       <Modal open={showModal} size='tiny' centered={false} trigger={
@@ -41,7 +41,7 @@ class EditProject extends Component {
       >
         <Header icon='edit' content="Rename Project" />
         <Modal.Content>
-          <ProjectForm type={'update'} id={id} name={name} userId={userId} />
+          <ProjectForm type={'update'} id={id} name={name} />
         </Modal.Content>
         <Modal.Actions>
           <Button color='red' inverted onClick={this.closeModal}>

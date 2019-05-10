@@ -36,7 +36,7 @@ class ProjectForm extends Component {
   }
 
   render(){
-    const { type, name, userId } = this.props
+    const { type, name } = this.props
 
     return(
       <div className='form-container'>
@@ -62,13 +62,6 @@ class ProjectForm extends Component {
                 onKeyPress={this.handleKeyPress}
               />
             }
-          </Form.Field>
-          <Form.Field>
-            <input
-              name='project[user_id]'
-              type='hidden'
-              value={userId}
-            />
           </Form.Field>
         </Form>
       </div>

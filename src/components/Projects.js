@@ -10,13 +10,11 @@ import ProjectLink from './ProjectLink'
 class Projects extends Component {
 
   componentDidMount() {
-    // this.props.actions.fetchProjects(this.props.user.id)
-    this.props.actions.fetchProjects(1)
+    this.props.actions.fetchProjects()
   }
 
   render() {
     const projects = this.props.projects
-    const user = this.props.user
 
     return (
       <div>
@@ -26,8 +24,7 @@ class Projects extends Component {
               Projects
               <Divider hidden />
             </Header>
-            {/* Update userId from hard-coded number */}
-            <ProjectForm type={'create'} userId={1}/>
+            <ProjectForm type={'create'} />
             <Menu vertical>
               {projects.map(project =>
                 <ProjectLink

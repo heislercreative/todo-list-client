@@ -12,7 +12,7 @@ class AccountForm extends Component {
       this.state = {
         'user[email]': '',
         'user[password]': '',
-        'user[password_placeholder]': '•••••••',
+        password_placeholder: '•••••••',
         'user[first_name]': '',
         'user[last_name]': ''
       }
@@ -20,7 +20,7 @@ class AccountForm extends Component {
       this.state = {
         'user[email]': props.user.email,
         'user[password]': '',
-        'user[password_placeholder]': 'Please re-enter or change password',
+        password_placeholder: 'Please re-enter or change password',
         'user[first_name]': props.user.first_name,
         'user[last_name]': props.user.last_name
       }
@@ -36,8 +36,7 @@ class AccountForm extends Component {
   handleSubmit = async (e) => {
     e.preventDefault()
     if (this.props.formType === 'createUser') {
-      await this.props.actions.createUser()
-      this.props.history.push('/projects')
+      this.props.actions.createUser()
     } else if (this.props.formType === 'updateUser') {
       await this.props.actions.updateUser(this.props)
       this.props.history.push('/account-confirmation')

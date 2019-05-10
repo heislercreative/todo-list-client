@@ -2,13 +2,17 @@ const api_base = '/api/v1'
 
 export function createUser() {
   return (dispatch) => {
-      dispatch({ type: 'SIGNING_UP' })
-      return fetch(`${api_base}/users`, {
-        method: 'POST',
-        body: new FormData(document.getElementById("user-form")),
-        credentials: 'same-origin'
-      })
-      .then(resp => loginOptions(resp, dispatch))
+    dispatch({ type: 'SIGNING_UP' })
+    return fetch(`${api_base}/users`, {
+      method: 'POST',
+      body: new FormData(document.getElementById("user-form")),
+      credentials: 'same-origin'
+    })
+      .then(resp => resp.json())
+      .then(user => dispatch({
+        type: 'SIGNUP_USER',
+        payload: user
+      }))
   }
 }
 
@@ -18,7 +22,7 @@ export function updateUser(props) {
     return fetch(`${api_base}/users/${props.user.id}`, {
       method: 'POST',
       body: new FormData(document.getElementById("user-form")),
-      credentials: 'same-origin'
+      credentials: 'include'
     })
     .then(resp => loginOptions(resp, dispatch))
   }
@@ -27,7 +31,7 @@ export function updateUser(props) {
 export function loginUser() {
   return (dispatch) => {
     dispatch({ type: 'LOGGING_IN' })
-    return fetch(`${api_base}/auth`, {
+    return fetch(`${api_base}/auth/login`, {
       method: 'POST',
       body: new FormData(document.getElementById("login-form")),
       credentials: 'include'
@@ -51,7 +55,7 @@ function loginOptions(resp, dispatch) {
 export function logoutUser() {
   return (dispatch) => {
     dispatch({ type: 'LOGGING_OUT' })
-    return fetch(`${api_base}/auth`, {
+    return fetch(`${api_base}/auth/logout`, {
       method: 'DELETE',
       credentials: 'include'
     })

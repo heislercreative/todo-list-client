@@ -37,9 +37,8 @@ class Project extends Component {
                 </Grid>
               </Segment>
             }
-            {/* Update userId from hard-coded number */}
             <Menu secondary>
-            <EditProject id={id} name={name} userId={1} />
+            <EditProject id={id} name={name} />
             <DeleteProject id={id} name={name} tasks={tasks} />
             </Menu>
           </div>
