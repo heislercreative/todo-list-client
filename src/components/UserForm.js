@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import * as actions from '../actions/userActions'
 import { Form } from 'semantic-ui-react'
 
-class AccountForm extends Component {
+class UserForm extends Component {
   constructor(props) {
     super(props)
     if (props.formType === 'createUser') {
@@ -116,4 +116,4 @@ function mapDispatchToProps(dispatch) {
   return { actions: bindActionCreators(actions, dispatch) }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AccountForm))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserForm))
