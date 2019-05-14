@@ -9,14 +9,20 @@
 }
 
 .project-menu {
-  min-width: 380px;
+
   margin-left: auto !important;
   margin-right: auto !important;
 }
 
-@media only screen and (max-width: 380px) {
+@media only screen and (min-width: 411px) {
   .project-menu {
-    max-width: 340px;
+    min-width: 380px;
+  }
+}
+
+@media only screen and (max-width: 410px) {
+  .project-menu {
+    min-width: 340px;
   }
 }
 
