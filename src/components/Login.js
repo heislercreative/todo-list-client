@@ -46,7 +46,7 @@ class Login extends Component {
         </Header>
         <div className='login-form-container'>
           <Form id="login-form" onSubmit={this.handleSubmit}>
-            <Form.Field>
+            <Form.Field className='form-field'>
               <label>Email</label>
               <input
                 name='email'
@@ -56,7 +56,7 @@ class Login extends Component {
                 onChange={this.handleChange}
               />
             </Form.Field>
-            <Form.Field>
+            <Form.Field className='form-field'>
               <label>Password</label>
               <input
                 name='password'

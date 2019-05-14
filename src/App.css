@@ -26,6 +26,18 @@
   }
 }
 
+@media only screen and (max-width: 370px) {
+  .project-menu {
+    min-width: 330px;
+  }
+}
+
+@media only screen and (max-width: 359px) {
+  .project-menu {
+    min-width: 310px;
+  }
+}
+
 .project-link {
   text-align: left;
 }
@@ -44,6 +56,12 @@
 
 .bottom-menu {
   max-width: 525px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.form-field {
+  max-width: 400px;
   margin-left: auto !important;
   margin-right: auto !important;
 }
